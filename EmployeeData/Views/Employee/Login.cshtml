@@ -1,0 +1,38 @@
+﻿@model EmployeeLibrary.ViewModels.LoginViewModel
+
+@if (ViewBag.Status != null)
+{
+    @if (ViewBag.Status.IsSuccess)
+    {
+        <div class="alert alert-success" role="alert">@ViewBag.Status.Message</div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Status.Message</div>
+    }
+}
+
+<form asp-action="Login" asp-antiforgery="true">
+    <div class="validation" style="color: red" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div class="mb-3 form-group">
+            <label class="form-label" asp-for="FirstName"></label>
+            <input class="form-control" asp-for="FirstName" />
+            <span style="color: red" asp-validation-for="FirstName"></span>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label" asp-for="LastName"></label>
+            <input class="form-control" asp-for="LastName" />
+            <span style="color: red" asp-validation-for="LastName"></span>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label" asp-for="Password"></label>
+            <input class="form-control" asp-for="Password" />
+            <span style="color: red" asp-validation-for="Password"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-outline-dark" value="Login" />
+        </div>
+    </div>
+</form>

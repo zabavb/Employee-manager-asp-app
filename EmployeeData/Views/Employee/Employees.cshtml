@@ -1,0 +1,37 @@
+﻿@using EmployeeLibrary.Models
+
+@model IEnumerable<Employee>
+
+@if (ViewBag.Status != null)
+{
+    @if (ViewBag.Status.IsSuccess)
+    {
+        <div class="alert alert-success" role="alert">@ViewBag.Status.Message</div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Status.Message</div>
+    }
+}
+
+<div>
+<a asp-action="Post" class="btn btn-outline-dark">Add</a>
+</div>
+<br />
+<h2>Employees</h2>
+<br />
+<form asp-action="Manage">
+    <div class="d-flex flex-wrap">
+        @foreach (Employee employee in Model)
+        {
+            <div class="card card-body" style="width: 18rem; max-width: 320px">
+                <h4 class="card-title">@employee.FullName</h4>
+                <h6 class="card-subtitle mb-2 text-muted">@employee.Role</h6>
+                <p class="card-text">@employee.Age</p>
+
+                <a asp-action="Put" asp-route-id="@employee.Id" class="btn btn-outline-dark">Edit</a>
+                <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-outline-dark">Remove</a>
+            </div>
+        }
+    </div>
+</form>

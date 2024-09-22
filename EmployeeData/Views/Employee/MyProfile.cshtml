@@ -1,0 +1,19 @@
+﻿@model EmployeeLibrary.Models.Employee
+
+@if (ViewBag.Status != null)
+{
+    @if (ViewBag.Status.IsSuccess)
+    {
+        <div class="alert alert-success" role="alert">@ViewBag.Status.Message</div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Status.Message</div>
+    }
+}
+
+<div class="col-md-3">
+    <h2 class="title">@Model.FullName</h2>
+    <h5 class="subtitle mb-2 text-muted">@Model.Role</h5>
+    <h4>@Model.Age years old</h4>
+</div>
